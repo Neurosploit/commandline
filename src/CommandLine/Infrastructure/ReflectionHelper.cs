@@ -103,7 +103,7 @@ namespace CommandLine.Infrastructure
         {
             var assembly = Assembly.GetEntryAssembly();
 
-#if !NETSTANDARD1_5
+#if !NETSTANDARD1_5 && !NETSTANDARD1_6
             assembly = assembly ?? Assembly.GetExecutingAssembly();
 #endif
 

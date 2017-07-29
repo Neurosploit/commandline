@@ -696,6 +696,8 @@ namespace CommandLine.Text
 
 #if NETSTANDARD1_5
                     var examples = (IEnumerable<Example>)prop.GetValue(null);
+#elif NETSTANDARD1_6
+                    var examples = (IEnumerable<Example>)prop.GetValue(null);
 #else
                     var examples = (IEnumerable<Example>)prop
                         .GetValue(null, BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty, null, null, null);

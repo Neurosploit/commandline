@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-#if PLATFORM_DOTNET
+#if PLATFORM_DOTNET || NETSTANDARD1_6
 using System.Reflection;
 #endif
 using CommandLine.Core;

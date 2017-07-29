@@ -12,11 +12,13 @@ namespace CommandLine.Infrastructure
     {
         public static Type GetUnderlyingType(Type type)
         {
-            return type
 #if NETSTANDARD1_5
-                .GetTypeInfo()
+            return type.GetTypeInfo();
+#elif NETSTANDARD1_6
+            return type.GetGenericTypeDefinition().GenericTypeArguments[0];
+#else
+            return type.GetGenericArguments()[0];
 #endif
-                .GetGenericArguments()[0];
         }
 
         public static object Some(Type type, object value)

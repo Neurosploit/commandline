@@ -186,6 +186,9 @@ namespace CommandLine.Core
 #if NETSTANDARD1_5
             MethodInfo method = type.GetTypeInfo().GetDeclaredMethod(name);
             return method.Invoke(null, args);
+#elif NETSTANDARD1_6
+            MethodInfo method = type.GetTypeInfo().GetDeclaredMethod(name);
+            return method.Invoke(null, args);
 #else
             return type.GetTypeInfo().InvokeMember(
                 name,
@@ -201,6 +204,9 @@ namespace CommandLine.Core
 #if NETSTANDARD1_5
             PropertyInfo property = type.GetTypeInfo().GetDeclaredProperty(name);
             return property.GetValue(null);
+#elif NETSTANDARD1_6
+            PropertyInfo property = type.GetTypeInfo().GetDeclaredProperty(name);
+            return property.GetValue(null);
 #else
             return type.GetTypeInfo().InvokeMember(
                 name,
@@ -214,6 +220,9 @@ namespace CommandLine.Core
         public static object InstanceProperty(this Type type, string name, object target)
         {
 #if NETSTANDARD1_5
+            PropertyInfo property = type.GetTypeInfo().GetDeclaredProperty(name);
+            return property.GetValue(target);
+#elif NETSTANDARD1_6
             PropertyInfo property = type.GetTypeInfo().GetDeclaredProperty(name);
             return property.GetValue(target);
 #else
